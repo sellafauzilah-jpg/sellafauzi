@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TokoKu - Belanja Online Murah, Aman, dan Terpercaya</title>
+    <title>KeonExpress - Belanja Online Global, Elektronik, Fashion &更多</title>
 
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -13,70 +13,88 @@
     <!-- Custom CSS -->
     <style>
         :root {
-            --shopee-orange: #ee4d2d;
+            --keon-red: #ff4747;
+            --keon-dark-red: #e63333;
+            --keon-light-bg: #fff5f5;
+            --keon-gray-text: #757575;
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Roboto', 'Helvetica Neue', Arial, sans-serif;
             background-color: #f5f5f5;
+            color: #333;
         }
 
         /* Top Bar */
         .top-bar {
-            background-color: #f5f5f5;
-            border-bottom: 1px solid #e1e1e1;
-            font-size: 0.875rem;
+            background-color: #f8f8f8;
+            border-bottom: 1px solid #e5e5e5;
+            font-size: 0.85rem;
         }
-
-        .top-bar a {
-            color: #555;
-            text-decoration: none;
+        .top-bar .nav-link {
+            color: var(--keon-gray-text);
+            padding: 0.5rem 1rem;
         }
-
-        .top-bar a:hover {
-            color: var(--shopee-orange);
+        .top-bar .nav-link:hover {
+            color: var(--keon-red);
         }
 
         /* Main Header */
         .main-header {
             background-color: white;
             padding: 1rem 0;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
         }
-
-        .search-bar .form-control {
-            border-right: none;
-            border-radius: 2px 0 0 2px;
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--keon-red);
+            text-decoration: none;
         }
-
-        .search-bar .btn {
-            background-color: var(--shopee-orange);
-            border: 1px solid var(--shopee-orange);
-            border-radius: 0 2px 2px 0;
-            color: white;
-        }
-
-        .search-bar .btn:hover {
-            background-color: #d63218;
-            border-color: #d63218;
-        }
-
-        .header-icons a {
-            color: #555;
-            font-size: 1.25rem;
-            margin-left: 1.5rem;
+        .search-bar {
             position: relative;
         }
-
-        .header-icons a:hover {
-            color: var(--shopee-orange);
+        .search-bar .form-control {
+            padding-left: 1rem;
+            border-radius: 4px;
+            border: 2px solid var(--keon-red);
+            font-size: 1rem;
         }
-
+        .search-bar .btn-search {
+            position: absolute;
+            right: 5px;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: var(--keon-red);
+            border: none;
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 4px;
+        }
+        .search-bar .btn-search:hover {
+            background-color: var(--keon-dark-red);
+        }
+        .header-icons a {
+            color: var(--keon-gray-text);
+            font-size: 1.5rem;
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-left: 1.5rem;
+        }
+        .header-icons a:hover {
+            color: var(--keon-red);
+        }
+        .header-icons span {
+            font-size: 0.75rem;
+            margin-top: 0.25rem;
+        }
         .cart-badge {
             position: absolute;
-            top: -8px;
-            right: -8px;
-            background-color: var(--shopee-orange);
+            top: -5px;
+            right: -10px;
+            background-color: var(--keon-red);
             color: white;
             border-radius: 50%;
             padding: 2px 6px;
@@ -87,124 +105,537 @@
         /* Category Nav */
         .category-nav {
             background-color: white;
-            border-top: 1px solid #e1e1e1;
+            border-top: 1px solid #e5e5e5;
+            border-bottom: 1px solid #e5e5e5;
         }
         .category-nav .nav-link {
-            color: #555;
+            color: #333;
             font-weight: 500;
-            padding: 0.75rem 1.5rem;
+            padding: 1rem;
+            border-radius: 0;
         }
         .category-nav .nav-link:hover, .category-nav .nav-link.active {
-            color: var(--shopee-orange);
-            background-color: #fff5f5;
+            color: var(--keon-red);
+            background-color: var(--keon-light-bg);
         }
 
-        /* Flash Sale Section */
-        .flash-sale-header {
+        /* Flash Deals Section */
+        .flash-deals {
             background-color: white;
-            padding: 1rem;
-            border-radius: 8px 8px 0 0;
+            border-radius: 8px;
+            margin-top: 1.5rem;
+            overflow: hidden;
+        }
+        .flash-deals-header {
+            background: linear-gradient(90deg, var(--keon-red), var(--keon-dark-red));
+            color: white;
+            padding: 1rem 1.5rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-
-        .flash-sale-header h2 {
-            color: var(--shopee-orange);
+        .flash-deals-header h2 {
             margin: 0;
             font-size: 1.5rem;
         }
-
-        .flash-sale-timer {
+        .flash-timer {
             display: flex;
             align-items: center;
             gap: 0.5rem;
         }
-
         .timer-block {
-            background-color: #222;
+            background-color: rgba(0,0,0,0.3);
             color: white;
             padding: 0.25rem 0.5rem;
             border-radius: 4px;
             font-weight: bold;
+            font-size: 1.1rem;
         }
-
-        .flash-sale-container {
-            background-color: white;
+        .flash-deals-container {
             padding: 1rem;
-            border-radius: 0 0 8px 8px;
-            overflow-x: auto;
             display: flex;
             gap: 1rem;
+            overflow-x: auto;
         }
-
-        .flash-sale-container::-webkit-scrollbar {
+        .flash-deals-container::-webkit-scrollbar {
             height: 8px;
         }
-
-        .flash-sale-container::-webkit-scrollbar-track {
-            background: #f1f1f1;
-        }
-
-        .flash-sale-container::-webkit-scrollbar-thumb {
+        .flash-deals-container::-webkit-scrollbar-thumb {
             background: #ccc;
             border-radius: 4px;
         }
 
         /* Product Card */
         .product-card {
-            border: 1px solid #e1e1e1;
+            border: 1px solid #e5e5e5;
             border-radius: 8px;
             overflow: hidden;
-            transition: transform 0.2s, box-shadow 0.2s;
+            transition: all 0.3s ease;
             background-color: white;
             cursor: pointer;
+            flex: 0 0 auto; /* For horizontal scroll */
+            width: 220px; /* Fixed width for flash sale */
         }
-
+        .product-grid .product-card {
+            width: 100%; /* Reset width for grid */
+        }
         .product-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transform: translateY(-8px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
         }
-
+        .product-card .product-image-wrapper {
+            position: relative;
+            overflow: hidden;
+        }
         .product-card img {
             width: 100%;
-            height: 200px;
+            height: 220px;
             object-fit: cover;
+            transition: transform 0.3s ease;
         }
-
-        .product-card .card-body {
-            padding: 0.75rem;
+        .product-card:hover img {
+            transform: scale(1.05);
         }
-
-        .product-card .product-title {
+        .product-card .discount-badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: var(--keon-red);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-weight: bold;
             font-size: 0.9rem;
+        }
+        .product-card .card-body {
+            padding: 1rem;
+        }
+        .product-card .product-title {
+            font-size: 0.95rem;
             height: 40px;
             overflow: hidden;
             display: -webkit-box;
             -webkit-line-clamp: 2;
             -webkit-box-orient: vertical;
+            margin-bottom: 0.5rem;
         }
-
         .product-card .product-price {
             font-weight: bold;
-            color: var(--shopee-orange);
-            font-size: 1.1rem;
+            color: var(--keon-red);
+            font-size: 1.25rem;
         }
-
         .product-card .product-old-price {
             text-decoration: line-through;
             color: #999;
+            font-size: 0.9rem;
+            margin-left: 0.5rem;
+        }
+        .product-card .product-shipping {
+            color: #5cb85c;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+        .product-card .product-sold {
+            color: var(--keon-gray-text);
             font-size: 0.85rem;
         }
-
-        .product-card .product-discount {
-            background-color: #fff0f0;
-            color: var(--shopee-orange);
-            font-weight: bold;
-            font-size: 0.8rem;
-            padding: 2px 6px;
-            border-radius: 4px;
+        
+        /* Footer */
+        footer {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            margin-top: 3rem;
+            padding: 3rem 0 1rem;
         }
+        footer h5 {
+            color: white;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            font-size: 1rem;
+        }
+        footer ul {
+            list-style: none;
+            padding: 0;
+        }
+        footer ul li a {
+            color: #bdc3c7;
+            text-decoration: none;
+            font-size: 0.9rem;
+            line-height: 2.2;
+        }
+        footer ul li a:hover {
+            color: var(--keon-red);
+        }
+        .footer-bottom {
+            border-top: 1px solid #34495e;
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            text-align: center;
+            color: #95a5a6;
+            font-size: 0.875rem;
+        }
+        .payment-methods img {
+            height: 30px;
+            margin-right: 10px;
+            filter: grayscale(100%);
+            opacity: 0.7;
+            transition: all 0.3s ease;
+        }
+        .payment-methods img:hover {
+            filter: grayscale(0%);
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
 
-        .product-card .product-location {
-            font-size
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <ul class="nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Bantuan</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Seller</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                        <i class="bi bi-globe"></i> Indonesia | IDR
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">English | USD</a></li>
+                        <li><a class="dropdown-item" href="#">Español | EUR</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Main Header -->
+    <header class="main-header">
+        <div class="container">
+            <div class="row align-items-center">
+                <!-- Logo -->
+                <div class="col-auto">
+                    <a href="#" class="logo">KeonExpress</a>
+                </div>
+                
+                <!-- Search Bar -->
+                <div class="col">
+                    <form class="search-bar">
+                        <input type="text" class="form-control" placeholder="Cari produk, merek, dan lainnya...">
+                        <button class="btn btn-search" type="submit">
+                            <i class="bi bi-search"></i>
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Header Icons -->
+                <div class="col-auto header-icons d-flex align-items-center">
+                    <a href="#">
+                        <i class="bi bi-person"></i>
+                        <span>Akun</span>
+                    </a>
+                    <a href="#">
+                        <i class="bi bi-heart"></i>
+                        <span>Wishlist</span>
+                    </a>
+                    <a href="#" style="position: relative;">
+                        <i class="bi bi-cart3"></i>
+                        <span>Keranjang</span>
+                        <span class="cart-badge">5</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Category Navigation -->
+    <nav class="category-nav sticky-top">
+        <div class="container">
+            <ul class="nav">
+                <li class="nav-item">
+                    <a class="nav-link active" href="#">Beranda</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Flash Deals</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Kategori</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Merek</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Best Seller</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Baru</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Kupon</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container my-4">
+        <!-- Hero Banner -->
+        <div class="row">
+            <div class="col-12">
+                <img src="https://picsum.photos/seed/keonexpress-hero/1200/300.jpg" class="img-fluid rounded" alt="KeonExpress Hero Banner">
+            </div>
+        </div>
+
+        <!-- Flash Deals Section -->
+        <section class="flash-deals">
+            <div class="flash-deals-header">
+                <h2><i class="bi bi-lightning-fill"></i> Flash Deals</h2>
+                <div class="flash-timer">
+                    <span>Berakhir dalam:</span>
+                    <span class="timer-block">02</span>
+                    <span>:</span>
+                    <span class="timer-block">15</span>
+                    <span>:</span>
+                    <span class="timer-block">45</span>
+                </div>
+            </div>
+            <div class="flash-deals-container">
+                <!-- Product Card 1 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <img src="https://picsum.photos/seed/product1/220/220.jpg" alt="Product 1">
+                        <span class="discount-badge">-50%</span>
+                    </div>
+                    <div class="card-body">
+                        <p class="product-title">Wireless Bluetooth Earbuds TWS with Charging Case</p>
+                        <div>
+                            <span class="product-price">Rp 150.000</span>
+                            <span class="product-old-price">Rp 300.000</span>
+                        </div>
+                        <p class="product-shipping mb-1"><i class="bi bi-truck"></i> Gratis Ongkir</p>
+                        <p class="product-sold">1.2k Terjual</p>
+                    </div>
+                </div>
+                <!-- Product Card 2 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <img src="https://picsum.photos/seed/product2/220/220.jpg" alt="Product 2">
+                        <span class="discount-badge">-45%</span>
+                    </div>
+                    <div class="card-body">
+                        <p class="product-title">Smart Watch Fitness Tracker for Android iOS</p>
+                        <div>
+                            <span class="product-price">Rp 275.000</span>
+                            <span class="product-old-price">Rp 500.000</span>
+                        </div>
+                        <p class="product-shipping mb-1"><i class="bi bi-truck"></i> Gratis Ongkir</p>
+                        <p class="product-sold">890 Terjual</p>
+                    </div>
+                </div>
+                <!-- Product Card 3 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <img src="https://picsum.photos/seed/product3/220/220.jpg" alt="Product 3">
+                        <span class="discount-badge">-60%</span>
+                    </div>
+                    <div class="card-body">
+                        <p class="product-title">Portable LED Projector 1080P Home Cinema</p>
+                        <div>
+                            <span class="product-price">Rp 1.200.000</span>
+                            <span class="product-old-price">Rp 3.000.000</span>
+                        </div>
+                        <p class="product-shipping mb-1"><i class="bi bi-truck"></i> Gratis Ongkir</p>
+                        <p class="product-sold">450 Terjual</p>
+                    </div>
+                </div>
+                 <!-- Product Card 4 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <img src="https://picsum.photos/seed/product4/220/220.jpg" alt="Product 4">
+                        <span class="discount-badge">-35%</span>
+                    </div>
+                    <div class="card-body">
+                        <p class="product-title">Mechanical Gaming Keyboard RGB Backlit</p>
+                        <div>
+                            <span class="product-price">Rp 650.000</span>
+                            <span class="product-old-price">Rp 1.000.000</span>
+                        </div>
+                        <p class="product-shipping mb-1"><i class="bi bi-truck"></i> Gratis Ongkir</p>
+                        <p class="product-sold">2.5k Terjual</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Just For You Section -->
+        <section class="my-5">
+            <h2 class="mb-4">Just For You</h2>
+            <div class="row product-grid g-3">
+                <!-- Product Card Grid 1 -->
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="product-card">
+                        <div class="product-image-wrapper">
+                            <img src="https://picsum.photos/seed/justforyou1/220/220.jpg" alt="Just For You 1">
+                            <span class="discount-badge">-20%</span>
+                        </div>
+                        <div class="card-body">
+                            <p class="product-title">Casual Men's Sneakers Comfortable Walking Shoes</p>
+                            <div>
+                                <span class="product-price">Rp 320.000</span>
+                                <span class="product-old-price">Rp 400.000</span>
+                            </div>
+                            <p class="product-shipping mb-1"><i class="bi bi-truck"></i> Gratis Ongkir</p>
+                            <p class="product-sold">5.1k Terjual</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Product Card Grid 2 -->
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="product-card">
+                        <div class="product-image-wrapper">
+                            <img src="https://picsum.photos/seed/justforyou2/220/220.jpg" alt="Just For You 2">
+                            <span class="discount-badge">-15%</span>
+                        </div>
+                        <div class="card-body">
+                            <p class="product-title">Women's Elegant Handbag PU Leather Tote Bag</p>
+                            <div>
+                                <span class="product-price">Rp 255.000</span>
+                                <span class="product-old-price">Rp 300.000</span>
+                            </div>
+                            <p class="product-shipping mb-1"><i class="bi bi-truck"></i> Gratis Ongkir</p>
+                            <p class="product-sold">890 Terjual</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Product Card Grid 3 -->
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="product-card">
+                        <div class="product-image-wrapper">
+                            <img src="https://picsum.photos/seed/justforyou3/220/220.jpg" alt="Just For You 3">
+                        </div>
+                        <div class="card-body">
+                            <p class="product-title">USB-C Hub Multiport Adapter 7-in-1 for Laptop</p>
+                            <div>
+                                <span class="product-price">Rp 180.000</span>
+                            </div>
+                            <p class="product-shipping mb-1"><i class="bi bi-truck"></i> Gratis Ongkir</p>
+                            <p class="product-sold">3.2k Terjual</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Product Card Grid 4 -->
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="product-card">
+                        <div class="product-image-wrapper">
+                            <img src="https://picsum.photos/seed/justforyou4/220/220.jpg" alt="Just For You 4">
+                            <span class="discount-badge">-70%</span>
+                        </div>
+                        <div class="card-body">
+                            <p class="product-title">Solar Power Bank 20000mAh Waterproof Outdoor</p>
+                            <div>
+                                <span class="product-price">Rp 210.000</span>
+                                <span class="product-old-price">Rp 700.000</span>
+                            </div>
+                            <p class="product-shipping mb-1"><i class="bi bi-truck"></i> Gratis Ongkir</p>
+                            <p class="product-sold">1.8k Terjual</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Add more product cards as needed -->
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="product-card">
+                        <div class="product-image-wrapper">
+                            <img src="https://picsum.photos/seed/justforyou5/220/220.jpg" alt="Just For You 5">
+                        </div>
+                        <div class="card-body">
+                            <p class="product-title">Automatic Water Dispenser for Pets</p>
+                            <div>
+                                <span class="product-price">Rp 125.000</span>
+                            </div>
+                            <p class="product-shipping mb-1"><i class="bi bi-truck"></i> Gratis Ongkir</p>
+                            <p class="product-sold">980 Terjual</p>
+                        </div>
+                    </div>
+                </div>
+                 <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="product-card">
+                        <div class="product-image-wrapper">
+                            <img src="https://picsum.photos/seed/justforyou6/220/220.jpg" alt="Just For You 6">
+                            <span class="discount-badge">-40%</span>
+                        </div>
+                        <div class="card-body">
+                            <p class="product-title">Smart Home Security Camera WiFi 1080P</p>
+                            <div>
+                                <span class="product-price">Rp 300.000</span>
+                                <span class="product-old-price">Rp 500.000</span>
+                            </div>
+                            <p class="product-shipping mb-1"><i class="bi bi-truck"></i> Gratis Ongkir</p>
+                            <p class="product-sold">4.5k Terjual</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5>Bantuan</h5>
+                    <ul>
+                        <li><a href="#">Pusat Bantuan</a></li>
+                        <li><a href="#">Cara Berbelanja</a></li>
+                        <li><a href="#">Pengiriman & Pembayaran</a></li>
+                        <li><a href="#">Kebijakan Pengembalian</a></li>
+                        <li><a href="#">Hubungi Kami</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5>Tentang KeonExpress</h5>
+                    <ul>
+                        <li><a href="#">Tentang Kami</a></li>
+                        <li><a href="#">Karir</a></li>
+                        <li><a href="#">Program Kemitraan</a></li>
+                        <li><a href="#">Pers</a></li>
+                        <li><a href="#">Kebijakan Privasi</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5>Metode Pembayaran</h5>
+                    <div class="payment-methods">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Paypal_2014_logo.png/240px-Paypal_2014_logo.png" alt="PayPal">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Visa.svg/200px-Visa.svg.png" alt="Visa">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Mastercard-logo.svg/200px-Mastercard-logo.svg.png" alt="Mastercard">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Gopay_logo.svg/240px-Gopay_logo.svg.png" alt="Gopay">
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5>Ikuti Kami</h5>
+                    <a href="#" class="text-white me-3 fs-4"><i class="bi bi-facebook"></i></a>
+                    <a href="#" class="text-white me-3 fs-4"><i class="bi bi-instagram"></i></a>
+                    <a href="#" class="text-white me-3 fs-4"><i class="bi bi-twitter"></i></a>
+                    <a href="#" class="text-white fs-4"><i class="bi bi-youtube"></i></a>
+                    <div class="mt-3">
+                        <h5>Unduh Aplikasi</h5>
+                        <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Google_Play_Store_badge_EN.svg/270px-Google_Play_Store_badge_EN.svg.png" alt="Google Play" height="40"></a>
+                        <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Download_on_the_App_Store_Badge.svg/203px-Download_on_the_App_Store_Badge.svg.png" alt="App Store" height="40"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 KeonExpress. Hak Cipta Dilindungi.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
