@@ -1,1 +1,210 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TokoKu - Belanja Online Murah, Aman, dan Terpercaya</title>
 
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    
+    <!-- Custom CSS -->
+    <style>
+        :root {
+            --shopee-orange: #ee4d2d;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f5f5;
+        }
+
+        /* Top Bar */
+        .top-bar {
+            background-color: #f5f5f5;
+            border-bottom: 1px solid #e1e1e1;
+            font-size: 0.875rem;
+        }
+
+        .top-bar a {
+            color: #555;
+            text-decoration: none;
+        }
+
+        .top-bar a:hover {
+            color: var(--shopee-orange);
+        }
+
+        /* Main Header */
+        .main-header {
+            background-color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+        }
+
+        .search-bar .form-control {
+            border-right: none;
+            border-radius: 2px 0 0 2px;
+        }
+
+        .search-bar .btn {
+            background-color: var(--shopee-orange);
+            border: 1px solid var(--shopee-orange);
+            border-radius: 0 2px 2px 0;
+            color: white;
+        }
+
+        .search-bar .btn:hover {
+            background-color: #d63218;
+            border-color: #d63218;
+        }
+
+        .header-icons a {
+            color: #555;
+            font-size: 1.25rem;
+            margin-left: 1.5rem;
+            position: relative;
+        }
+
+        .header-icons a:hover {
+            color: var(--shopee-orange);
+        }
+
+        .cart-badge {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: var(--shopee-orange);
+            color: white;
+            border-radius: 50%;
+            padding: 2px 6px;
+            font-size: 0.7rem;
+            font-weight: bold;
+        }
+
+        /* Category Nav */
+        .category-nav {
+            background-color: white;
+            border-top: 1px solid #e1e1e1;
+        }
+        .category-nav .nav-link {
+            color: #555;
+            font-weight: 500;
+            padding: 0.75rem 1.5rem;
+        }
+        .category-nav .nav-link:hover, .category-nav .nav-link.active {
+            color: var(--shopee-orange);
+            background-color: #fff5f5;
+        }
+
+        /* Flash Sale Section */
+        .flash-sale-header {
+            background-color: white;
+            padding: 1rem;
+            border-radius: 8px 8px 0 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .flash-sale-header h2 {
+            color: var(--shopee-orange);
+            margin: 0;
+            font-size: 1.5rem;
+        }
+
+        .flash-sale-timer {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .timer-block {
+            background-color: #222;
+            color: white;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+
+        .flash-sale-container {
+            background-color: white;
+            padding: 1rem;
+            border-radius: 0 0 8px 8px;
+            overflow-x: auto;
+            display: flex;
+            gap: 1rem;
+        }
+
+        .flash-sale-container::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .flash-sale-container::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        .flash-sale-container::-webkit-scrollbar-thumb {
+            background: #ccc;
+            border-radius: 4px;
+        }
+
+        /* Product Card */
+        .product-card {
+            border: 1px solid #e1e1e1;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.2s, box-shadow 0.2s;
+            background-color: white;
+            cursor: pointer;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .product-card .card-body {
+            padding: 0.75rem;
+        }
+
+        .product-card .product-title {
+            font-size: 0.9rem;
+            height: 40px;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+        }
+
+        .product-card .product-price {
+            font-weight: bold;
+            color: var(--shopee-orange);
+            font-size: 1.1rem;
+        }
+
+        .product-card .product-old-price {
+            text-decoration: line-through;
+            color: #999;
+            font-size: 0.85rem;
+        }
+
+        .product-card .product-discount {
+            background-color: #fff0f0;
+            color: var(--shopee-orange);
+            font-weight: bold;
+            font-size: 0.8rem;
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+
+        .product-card .product-location {
+            font-size
